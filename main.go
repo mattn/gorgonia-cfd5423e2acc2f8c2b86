@@ -7,7 +7,9 @@ import (
 	"math"
 	"math/big"
 	"math/rand"
+	"net/http"
 	_ "net/http/pprof"
+	"time"
 
 	nnmodel "github.com/mattn/gorgonia-cfd5423e2acc2f8c2b86/twolayernn"
 	"github.com/pkg/errors"
@@ -50,6 +52,10 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	go func() {
+		log.Println(http.ListenAndServe("localhost:6060", nil))
+	}()
 
 	//学習
 	err = train(g, model, dimensionNum, classNum, sampleNum, maxEpoch, batchSize, rng)
@@ -122,6 +128,7 @@ func train(g *gorgonia.ExprGraph, model *nnmodel.TwoLayerNeuralNetworkModel, dim
 
 	//トレーニング用のデータを生成
 	inputDense, expectedDense := createTrainingData(dimensionNum, classNum, sampleNum, rng)
+	starttime := time.Now()
 	for i := 0; i < maxEpoch; i++ {
 		//入力のノードにトレーニング用のデータを注入
 		if err := gorgonia.Let(model.Input, inputDense); err != nil {
@@ -136,17 +143,19 @@ func train(g *gorgonia.ExprGraph, model *nnmodel.TwoLayerNeuralNetworkModel, dim
 			return errors.WithStack(err)
 		}
 
-		//1万回に1回進捗を出力
-		if i%10000 == 0 {
-			fmt.Printf("loop:%d, cost:%v\n", i, model.CostValue)
-		}
-
 		//勾配から重みとバイアスを更新
 		if err := solver.Step(gorgonia.NodesToValueGrads(model.Learnables())); err != nil {
 			return errors.WithStack(err)
 		}
 
 		vm.Reset()
+
+		//1万回に1回進捗を出力
+		if i%10000 == 0 {
+			log.Printf("loop:%d, cost:%v, time taken %v\n", i, model.CostValue, time.Since(starttime))
+			starttime = time.Now()
+		}
+
 	}
 
 	return nil
