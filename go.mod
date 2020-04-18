@@ -5,7 +5,7 @@ go 1.14
 require (
 	github.com/awalterschulze/gographviz v2.0.1+incompatible // indirect
 	github.com/gogo/protobuf v1.3.1 // indirect
-	github.com/golang/protobuf v1.3.5 // indirect
+	github.com/golang/protobuf v1.4.0 // indirect
 	github.com/google/flatbuffers v1.12.0 // indirect
 	github.com/leesper/go_rng v0.0.0-20190531154944-a612b043e353 // indirect
 	github.com/pkg/errors v0.9.1
