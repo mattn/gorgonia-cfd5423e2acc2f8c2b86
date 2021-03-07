@@ -5,6 +5,8 @@ github.com/ajstarks/svgo v0.0.0-20180226025133-644b8db467af/go.mod h1:K08gAheRH3
 github.com/apache/arrow/go/arrow v0.0.0-20201229220542-30ce2eb5d4dc/go.mod h1:c9sxoIT3YgLxH4UhLOCKaBlEojuMhVYpk4Ntv3opUTQ=
 github.com/apache/arrow/go/arrow v0.0.0-20210203060638-dbc77d2e1f19 h1:oe7JYeP40YS9Esp4N87lwefjKEOb1aa2TsWzhY9aDNc=
 github.com/apache/arrow/go/arrow v0.0.0-20210203060638-dbc77d2e1f19/go.mod h1:c9sxoIT3YgLxH4UhLOCKaBlEojuMhVYpk4Ntv3opUTQ=
+github.com/apache/arrow/go/arrow v0.0.0-20210305033524-479dce5c790d h1:8d9jxg6IGFPvpb5WIVcTzeMymLficPstY4yFeSSxcyw=
+github.com/apache/arrow/go/arrow v0.0.0-20210305033524-479dce5c790d/go.mod h1:c9sxoIT3YgLxH4UhLOCKaBlEojuMhVYpk4Ntv3opUTQ=
 github.com/awalterschulze/gographviz v0.0.0-20190221210632-1e9ccb565bca/go.mod h1:GEV5wmg4YquNw7v1kkyoX9etIk8yVmXj+AkDHuuETHs=
 github.com/awalterschulze/gographviz v2.0.3+incompatible h1:9sVEXJBJLwGX7EQVhLm2elIKCm7P2YHFC8v6096G09E=
 github.com/awalterschulze/gographviz v2.0.3+incompatible/go.mod h1:GEV5wmg4YquNw7v1kkyoX9etIk8yVmXj+AkDHuuETHs=
